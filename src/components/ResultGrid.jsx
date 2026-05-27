@@ -23,6 +23,7 @@ const ResultGrid = () => {
                         title: elem.alt_description,
                         thumbnail: elem.urls.small,
                         src: elem.urls.full,
+                        url: elem.links.download,
                     }));
                 }
                 if (activeTab === 'Videos') {
@@ -33,6 +34,8 @@ const ResultGrid = () => {
                         title: elem.user.name || 'Untitled',
                         thumbnail: elem.images,
                         src: elem.video_files[0].link,
+                        url:elem.url
+                        
                     }));
                 }
                 dispatch(setResults(data));
@@ -41,7 +44,7 @@ const ResultGrid = () => {
             }
         }
         getData();
-    }, [query, activeTab]);
+    }, [query, activeTab, dispatch]);
 
     if (error) return <p className="text-red-500 text-center text-2xl">Error: {error}</p>
     if (isLoading) return <p className="text-white text-center text-2xl">Loading...</p>
@@ -50,7 +53,9 @@ const ResultGrid = () => {
         <div className='flex flex-wrap gap-6 p-4 justify-between w-full'>
             {results.map((item, idx) => (
                 <div key={idx}>
-                    <ResultCard item={item} />
+                    
+                        <ResultCard item={item} />
+                    
                 </div>
             ))}
         </div>

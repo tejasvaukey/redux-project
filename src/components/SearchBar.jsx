@@ -13,7 +13,7 @@ const SearchBar = () => {
     }
   return (
     <div className=' '>
-        <form className='flex p-10 gap-5 bg-gray-800' onSubmit={(e) => submitHandler(e)}>
+        <form className='flex p-10 gap-5 bg-(--c1)' onSubmit={(e) => submitHandler(e)}>
             <input type="text" 
             value={text}
             onChange={(e) => setText(e.target.value)}
